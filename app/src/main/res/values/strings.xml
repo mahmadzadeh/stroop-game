@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shape Match Android</string>
+    <string name="app_name">Stroop Game1</string>
     <string name="countdown_title">Countdown</string>
     <string name="start_game">Start Game</string>
     <string name="continue_game">Continue</string>
@@ -11,5 +11,5 @@
     <string name="mismatch_button_string">Mismatch</string>
     <string name="quit_button_string">Quit</string>
     <string name="title_activity_chart">ChartActivity</string>
-    <string name="title_activity_start_screen">Stroop Game</string>
+    <string name="title_activity_start_screen">Stroop Game2</string>
 </resources>
