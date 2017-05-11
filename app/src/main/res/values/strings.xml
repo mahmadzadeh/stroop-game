@@ -12,4 +12,5 @@
     <string name="quit_button_string">Quit</string>
     <string name="title_activity_chart">ChartActivity</string>
     <string name="title_activity_start_screen">Stroop Game2</string>
+    <string name="stroop_game">Stroopy</string>
 </resources>

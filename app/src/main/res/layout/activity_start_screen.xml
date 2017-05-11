@@ -10,4 +10,3 @@
     <include layout="@layout/content_start_screen" />
 
 </android.support.design.widget.CoordinatorLayout>
-

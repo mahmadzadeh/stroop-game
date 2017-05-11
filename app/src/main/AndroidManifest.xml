@@ -24,7 +24,16 @@
             android:label="@string/countdown_title"
             android:noHistory="true"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".GameScreenActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/stroop_game"
+            android:noHistory="true"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
