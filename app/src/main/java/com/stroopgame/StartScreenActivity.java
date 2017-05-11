@@ -20,7 +20,7 @@ public class StartScreenActivity extends AppCompatActivity {
                 new Button.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent countDownIntent = new Intent(v.getContext(), MainActivity.class);
+                        Intent countDownIntent = new Intent(v.getContext(), CountDownScreenActivity.class);
                         startActivity(countDownIntent);
                     }
                 });
