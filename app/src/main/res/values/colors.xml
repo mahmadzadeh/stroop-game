@@ -2,7 +2,7 @@
 <resources>
     <color name="startButtonTextColor">#fafaf8</color>
     <color name="continueButtonTextColor">#fafaf8</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#2440f4</color>
     <color name="colorAccent">#FF4081</color>
     <color name="buttonBackGround">#7bdc4c</color>
     <color name="startScreenBackground">#000000</color>
