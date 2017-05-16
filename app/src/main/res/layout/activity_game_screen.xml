@@ -98,6 +98,7 @@
                         android:id="@+id/leftButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/roundbutton"
                         android:elegantTextHeight="false"
                         android:text="RED"
                         android:textColor="#FF0000"
@@ -135,9 +136,9 @@
                         android:id="@+id/rightButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/roundbutton"
                         android:text="BLUE"
                         android:textColor="#16A3F1"
-                        android:textColorLink="@color/colorPrimaryDark"
                         android:textStyle="bold|italic" />
                 </LinearLayout>
 

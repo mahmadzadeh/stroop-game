@@ -2,9 +2,7 @@ package com.stroopgame;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -20,42 +18,52 @@ public class StroopGameTest {
     }
 
     @Test
-    public void givenMainTextWhenLeftButtonShouldMatchColorThenLeftButtonHasMatchingColour() {
+    public void givenRightButtonTextShouldMatchColourOfMainTextThenGameParameterObjectContainsRightButtonWithCorrectText() {
 
-        Parameters mainTextParams = stroopGame.getNextRandomMainTextParameters();
+        boolean shouldRightButtonMatchMainColour = true;
+        Parameters mainText = new Parameters(Parameters.Text.BLUE, Parameters.Colour.RED);
 
-        Parameters leftButtonParam = stroopGame.getNextRandomLeftButtonParameters(mainTextParams, true);
+        GameParameterObjects gameParameterObjects = stroopGame.generateNextGameState(mainText, shouldRightButtonMatchMainColour);
 
-        assertEquals(mainTextParams.getColor(), leftButtonParam.getColor());
+        assertTrue(gameParameterObjects.getRightButton().getText() == Parameters.Text.RED);
+        assertTrue(gameParameterObjects.getLeftButton().getText() == Parameters.Text.BLUE);
     }
 
     @Test
-    public void givenMainTextWhenLeftButtonShouldNotMatchColorThenLeftButtonHasNonMatchingColour() {
+    public void givenRightButtonTextShouldNotMatchColourOfMainTextThenGameParameterObjectContainsRightButtonWithCorrectText() {
 
-        Parameters mainTextParams = stroopGame.getNextRandomMainTextParameters();
+        boolean shouldRightButtonMatchMainColour = false;
+        Parameters mainText = new Parameters(Parameters.Text.BLUE, Parameters.Colour.RED);
 
-        Parameters leftButtonParam = stroopGame.getNextRandomLeftButtonParameters(mainTextParams, false);
+        GameParameterObjects gameParameterObjects = stroopGame.generateNextGameState(mainText, shouldRightButtonMatchMainColour);
 
-        assertNotEquals(mainTextParams.getColor(), leftButtonParam.getColor());
+        assertTrue(gameParameterObjects.getLeftButton().getText() == Parameters.Text.RED);
+        assertTrue(gameParameterObjects.getRightButton().getText() == Parameters.Text.BLUE);
     }
 
     @Test
-    public void givenWrongChoiceThenCorrectAnswerReutnsFalse() {
-        Parameters mainTextParameters = stroopGame.getNextRandomMainTextParameters();
+    public void givenUserSelectedCorrectlyThenIsCorrectAnswerReturnsTrue() {
 
-        Parameters usersAnswer = mainTextParameters.ofOppositeColour();
+        Parameters mainText = new Parameters(Parameters.Text.BLUE, Parameters.Colour.RED);
+        Parameters usersAnswer = new Parameters(Parameters.Text.RED, Parameters.Colour.BLUE);
 
-        assertFalse(stroopGame.isCorrectAnswer(mainTextParameters, usersAnswer));
+        assertTrue(stroopGame.isCorrectAnswer(mainText, usersAnswer));
+
+        mainText = new Parameters(Parameters.Text.BLUE, Parameters.Colour.BLUE);
+        usersAnswer = new Parameters(Parameters.Text.BLUE, Parameters.Colour.BLUE);
+
+        assertTrue(stroopGame.isCorrectAnswer(mainText, usersAnswer));
 
     }
 
     @Test
-    public void givenRightChoiceThenCorrectAnswerReutnsTrue() {
-        Parameters mainTextParameters = stroopGame.getNextRandomMainTextParameters();
+    public void givenUserSelectedIncorrectlyThenIsCorrectAnswerReturnsTrue() {
 
-        Parameters usersAnswer = mainTextParameters.ofOppositText();
+        Parameters mainText = new Parameters(Parameters.Text.BLUE, Parameters.Colour.RED);
+        Parameters usersAnswer = new Parameters(Parameters.Text.BLUE, Parameters.Colour.BLUE);
 
-        assertTrue(stroopGame.isCorrectAnswer(mainTextParameters, usersAnswer));
+        assertFalse(stroopGame.isCorrectAnswer(mainText, usersAnswer));
     }
+
 
 }
