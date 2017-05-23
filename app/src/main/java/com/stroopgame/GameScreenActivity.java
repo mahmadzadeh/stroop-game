@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.stroopgame.Parameters.Colour.RED;
+import static com.stroopgame.StatefulGameObject.ColourState.RedColour;
 
 public class GameScreenActivity extends AppCompatActivity {
 
@@ -94,18 +94,21 @@ public class GameScreenActivity extends AppCompatActivity {
         coutdownTimerTxt.setText(text);
     }
 
-    public void setGameState(GameParameterObjects gameState) {
-        this.gameText.setText(gameState.getMainText().getText().toString());
-        this.gameText.setTextColor(gameState.getMainText().getColour() == RED ?
-                getResources().getColor(R.color.textRed) : getResources().getColor(R.color.textBlue));
+    public void setGameState(GameObjects gameState) {
+        this.gameText.setText(gameState.getMainText().getTextState().toString());
+        this.gameText.setTextColor(gameState.getMainText().getColourState() == RedColour
+                ? getResources().getColor(R.color.textRed)
+                : getResources().getColor(R.color.textBlue));
 
-        this.leftButton.setText(gameState.getLeftButton().getText().toString());
-        this.leftButton.setTextColor(gameState.getLeftButton().getColour() == RED ?
-                getResources().getColor(R.color.textRed) : getResources().getColor(R.color.textBlue));
+        this.leftButton.setText(gameState.getLeftButton().getTextState().toString());
+        this.leftButton.setTextColor(gameState.getLeftButton().getColourState() == RedColour
+                ? getResources().getColor(R.color.textRed)
+                : getResources().getColor(R.color.textBlue));
 
-        this.rightButton.setText(gameState.getRightButton().getText().toString());
-        this.rightButton.setTextColor(gameState.getRightButton().getColour() == RED ?
-                getResources().getColor(R.color.textRed) : getResources().getColor(R.color.textBlue));
+        this.rightButton.setText(gameState.getRightButton().getTextState().toString());
+        this.rightButton.setTextColor(gameState.getRightButton().getColourState() == RedColour
+                ? getResources().getColor(R.color.textRed)
+                : getResources().getColor(R.color.textBlue));
 
         this.scoreTxt.setText(stroopGame.getScore().toString());
     }

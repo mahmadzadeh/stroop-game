@@ -1,63 +1,64 @@
 package com.stroopgame;
 
-import static com.stroopgame.Parameters.Text.BLUE;
-import static com.stroopgame.Parameters.Text.RED;
+import static com.stroopgame.StatefulGameObject.ColourState.BlueColour;
+import static com.stroopgame.StatefulGameObject.ColourState.RedColour;
+import static com.stroopgame.StatefulGameObject.TextState.BlueText;
+import static com.stroopgame.StatefulGameObject.TextState.RedText;
 
 public class StroopGame {
 
     private int score;
 
-    private GameParameterObjects currentState;
+    private GameObjects currentState;
 
-    public GameParameterObjects getCurrentState() {
+    public GameObjects getCurrentState() {
         return currentState;
     }
 
     public void setCurrentState(boolean shouldRightButtonMatchMainColour) {
-        currentState = generateNextGameState(getNextRandomMainTextParameters(), shouldRightButtonMatchMainColour);
+        currentState = generateNextGameState(getNextRandomMainText(), shouldRightButtonMatchMainColour);
     }
 
-    public Parameters getNextRandomMainTextParameters() {
-
-        return RandomColourAndText.nextRandom();
+    public MainText getNextRandomMainText() {
+        return RandomColourAndText.nextRandomMainText();
     }
 
-    public GameParameterObjects generateNextGameState(Parameters mainTextParameters, boolean shouldRightButtonMatchMainColour) {
+    public GameObjects generateNextGameState(MainText mainText, boolean shouldRightButtonMatchMainColour) {
 
-        Parameters rightButton;
-        Parameters leftButton;
+        RightButton rightButton;
+        LeftButton leftButton;
 
         if (shouldRightButtonMatchMainColour) {
-            if (mainTextParameters.getColour() == Parameters.Colour.RED) {
-                rightButton = new Parameters(RED, getRandomColour());
+            if (mainText.getColourState() == RedColour) {
+                rightButton = new RightButton(RedText, getRandomColourState());
                 leftButton = rightButton.ofOppositeTextWithRandomColour();
             } else {
-                rightButton = new Parameters(BLUE, getRandomColour());
+                rightButton = new RightButton(BlueText, getRandomColourState());
                 leftButton = rightButton.ofOppositeTextWithRandomColour();
             }
         } else {
-            if (mainTextParameters.getColour() == Parameters.Colour.BLUE) {
-                leftButton = new Parameters(BLUE, getRandomColour());
+            if (mainText.getColourState() == BlueColour) {
+                leftButton = new LeftButton(BlueText, getRandomColourState());
                 rightButton = leftButton.ofOppositeTextWithRandomColour();
             } else {
-                leftButton = new Parameters(RED, getRandomColour());
+                leftButton = new LeftButton(RedText, getRandomColourState());
                 rightButton = leftButton.ofOppositeTextWithRandomColour();
             }
         }
 
-        return new GameParameterObjects(mainTextParameters, leftButton, rightButton);
+        return new GameObjects(leftButton, rightButton, mainText);
     }
 
-    public boolean evaluateAnswer(Parameters mainTextParameters, Parameters usersAnswer) {
-        return (mainTextParameters.getColour() == Parameters.Colour.BLUE && usersAnswer.getText() == Parameters.Text.BLUE) ||
-                (mainTextParameters.getColour() == Parameters.Colour.RED && usersAnswer.getText() == Parameters.Text.RED);
+    public boolean evaluateAnswer(MainText mainText, StatefulButton usersAnswer) {
+        return (mainText.getColourState() == BlueColour && usersAnswer.getTextState() == BlueText) ||
+                (mainText.getColourState() == RedColour && usersAnswer.getTextState() == RedText);
     }
 
-    public boolean isCorrectAnswerBasedOnInternalState(Parameters usersAnswer) {
+    public boolean isCorrectAnswerBasedOnInternalState(StatefulButton usersAnswer) {
         return evaluateAnswer(getCurrentState().getMainText(), usersAnswer);
     }
 
-    public void setScoreBasedOnAnswer(Parameters usersAnswer) {
+    public void setScoreBasedOnAnswer(StatefulButton usersAnswer) {
         if (isCorrectAnswerBasedOnInternalState(usersAnswer)) {
             score++;
         } else {
@@ -69,8 +70,8 @@ public class StroopGame {
         return score;
     }
 
-    private Parameters.Colour getRandomColour() {
-        return RandomBoolean.nextRandomTrue() ? Parameters.Colour.BLUE : Parameters.Colour.RED;
+    private StatefulGameObject.ColourState getRandomColourState() {
+        return RandomBoolean.nextRandomTrue() ? BlueColour : RedColour;
     }
 
     private Parameters getParameters(Parameters mainTextParam, boolean shouldMatchMainTextColour, Parameters parameters) {
