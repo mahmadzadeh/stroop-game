@@ -5,6 +5,8 @@ import static com.stroopgame.Parameters.Text.RED;
 
 public class StroopGame {
 
+    private int score;
+
     private GameParameterObjects currentState;
 
     public GameParameterObjects getCurrentState() {
@@ -46,13 +48,25 @@ public class StroopGame {
         return new GameParameterObjects(mainTextParameters, leftButton, rightButton);
     }
 
-    public boolean isCorrectAnswer(Parameters mainTextParameters, Parameters usersAnswer) {
+    public boolean evaluateAnswer(Parameters mainTextParameters, Parameters usersAnswer) {
         return (mainTextParameters.getColour() == Parameters.Colour.BLUE && usersAnswer.getText() == Parameters.Text.BLUE) ||
                 (mainTextParameters.getColour() == Parameters.Colour.RED && usersAnswer.getText() == Parameters.Text.RED);
     }
 
     public boolean isCorrectAnswerBasedOnInternalState(Parameters usersAnswer) {
-        return isCorrectAnswer(getCurrentState().getMainText(), usersAnswer);
+        return evaluateAnswer(getCurrentState().getMainText(), usersAnswer);
+    }
+
+    public void setScoreBasedOnAnswer(Parameters usersAnswer) {
+        if (isCorrectAnswerBasedOnInternalState(usersAnswer)) {
+            score++;
+        } else {
+            score--;
+        }
+    }
+
+    public Integer getScore() {
+        return score;
     }
 
     private Parameters.Colour getRandomColour() {

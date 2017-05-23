@@ -47,12 +47,12 @@ public class StroopGameTest {
         Parameters mainText = new Parameters(Parameters.Text.BLUE, Parameters.Colour.RED);
         Parameters usersAnswer = new Parameters(Parameters.Text.RED, Parameters.Colour.BLUE);
 
-        assertTrue(stroopGame.isCorrectAnswer(mainText, usersAnswer));
+        assertTrue(stroopGame.evaluateAnswer(mainText, usersAnswer));
 
         mainText = new Parameters(Parameters.Text.BLUE, Parameters.Colour.BLUE);
         usersAnswer = new Parameters(Parameters.Text.BLUE, Parameters.Colour.BLUE);
 
-        assertTrue(stroopGame.isCorrectAnswer(mainText, usersAnswer));
+        assertTrue(stroopGame.evaluateAnswer(mainText, usersAnswer));
 
     }
 
@@ -62,7 +62,7 @@ public class StroopGameTest {
         Parameters mainText = new Parameters(Parameters.Text.BLUE, Parameters.Colour.RED);
         Parameters usersAnswer = new Parameters(Parameters.Text.BLUE, Parameters.Colour.BLUE);
 
-        assertFalse(stroopGame.isCorrectAnswer(mainText, usersAnswer));
+        assertFalse(stroopGame.evaluateAnswer(mainText, usersAnswer));
     }
 
 

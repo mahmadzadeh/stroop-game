@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,7 +37,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
         coutdownTimerTxt = (TextView) findViewById(R.id.textViewCountDownTImer);
         gameText = (TextView) findViewById(R.id.textViewGameText);
-        scoreTxt = (TextView) findViewById(R.id.textViewScoreText);
+        scoreTxt = (TextView) findViewById(R.id.textViewScore);
         leftButton = (Button) findViewById(R.id.leftButton);
         rightButton = (Button) findViewById(R.id.rightButton);
 
@@ -55,8 +54,8 @@ public class GameScreenActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean corretAnswer = stroopGame.isCorrectAnswerBasedOnInternalState(stroopGame.getCurrentState().getLeftButton());
-                        Log.e("leftB.setOnClickList", " corect answer " + corretAnswer);
+
+                        stroopGame.setScoreBasedOnAnswer(stroopGame.getCurrentState().getLeftButton());
 
                         updateUI();
                     }
@@ -67,8 +66,8 @@ public class GameScreenActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean corretAnswer = stroopGame.isCorrectAnswerBasedOnInternalState(stroopGame.getCurrentState().getRightButton());
-                        Log.e("rightB.setOnClickList", " corect answer " + corretAnswer);
+                        stroopGame.setScoreBasedOnAnswer(stroopGame.getCurrentState().getRightButton());
+
                         updateUI();
                     }
                 }
@@ -107,6 +106,8 @@ public class GameScreenActivity extends AppCompatActivity {
         this.rightButton.setText(gameState.getRightButton().getText().toString());
         this.rightButton.setTextColor(gameState.getRightButton().getColour() == RED ?
                 getResources().getColor(R.color.textRed) : getResources().getColor(R.color.textBlue));
+
+        this.scoreTxt.setText(stroopGame.getScore().toString());
     }
 
     private void updateUI() {
