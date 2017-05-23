@@ -31,11 +31,35 @@ public class StatefulGameObject {
     }
 
     enum TextState {
-        RedText, BlueText;
+        RedText("RED"), BlueText("BLUE");
+
+        private String s;
+
+        TextState(String s) {
+
+            this.s = s;
+        }
+
+        @Override
+        public String toString() {
+            return s;
+        }
     }
 
     enum ColourState {
-        RedColour, BlueColour;
+        RedColour("RED"), BlueColour("BLUE");
+
+        private String colour;
+
+        ColourState(String colour) {
+
+            this.colour = colour;
+        }
+
+        @Override
+        public String toString() {
+            return colour;
+        }
     }
 
 
