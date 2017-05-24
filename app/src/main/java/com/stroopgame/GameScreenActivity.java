@@ -18,7 +18,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
     public static final String FINAL_SCORE = "FINAL_SCORE";
     public static final String TIMER_START_TIME = "00:00";
-    public final int ONE_ROUND_IN_MILLIS = 9000;
+    public final int ONE_ROUND_IN_MILLIS = 90000;
     public final int COUNT_DOWN_INTERVAL_IN_MILLIS = 1000;
 
     private StroopGame stroopGame = new StroopGame();
