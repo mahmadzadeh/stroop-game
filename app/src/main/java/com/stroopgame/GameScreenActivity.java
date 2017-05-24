@@ -25,6 +25,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private TextView gameText;
     private Button leftButton;
     private Button rightButton;
+    private SoundPlayer soundPlayer;
 
     private GameCountDownTimer timer;
 
@@ -40,6 +41,7 @@ public class GameScreenActivity extends AppCompatActivity {
         scoreTxt = (TextView) findViewById(R.id.textViewScore);
         leftButton = (Button) findViewById(R.id.leftButton);
         rightButton = (Button) findViewById(R.id.rightButton);
+        soundPlayer = new SoundPlayer(this);
 
         timer = new GameCountDownTimer(this, ONE_ROUND_IN_MILLIS, COUNT_DOWN_INTERVAL_IN_MILLIS);
 
@@ -56,7 +58,8 @@ public class GameScreenActivity extends AppCompatActivity {
                     public void onClick(View v) {
 
                         stroopGame.setScoreBasedOnAnswer(stroopGame.getCurrentState().getLeftButton());
-
+                        boolean isCorrectAnswer = stroopGame.isCorrectAnswerBasedOnInternalState(stroopGame.getCurrentState().getLeftButton());
+                        soundPlayer.soundFeedbackForUserInput(isCorrectAnswer);
                         updateUI();
                     }
                 }
@@ -67,7 +70,8 @@ public class GameScreenActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         stroopGame.setScoreBasedOnAnswer(stroopGame.getCurrentState().getRightButton());
-
+                        boolean isCorrectAnswer = stroopGame.isCorrectAnswerBasedOnInternalState(stroopGame.getCurrentState().getRightButton());
+                        soundPlayer.soundFeedbackForUserInput(isCorrectAnswer);
                         updateUI();
                     }
                 }
