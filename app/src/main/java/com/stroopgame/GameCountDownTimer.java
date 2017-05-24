@@ -1,6 +1,5 @@
 package com.stroopgame;
 
-import android.content.Intent;
 import android.os.CountDownTimer;
 
 import java.util.concurrent.TimeUnit;
@@ -33,12 +32,6 @@ public class GameCountDownTimer extends CountDownTimer {
 
     @Override
     public void onFinish() {
-        gameScreenActivity.setCountDownText("00:00");
-
-        Intent countDownIntent = new Intent(gameScreenActivity, StartScreenActivity.class);
-
-//        countDownIntent.putExtra(GameScreenActivity.FINAL_SCORE, gameScreenActivity.currentPoints());
-
-        gameScreenActivity.startActivity(countDownIntent);
+        gameScreenActivity.nextActivity();
     }
 }

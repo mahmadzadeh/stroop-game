@@ -1,5 +1,6 @@
 package com.stroopgame;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,7 +16,9 @@ import static com.stroopgame.StatefulGameObject.ColourState.RedColour;
 
 public class GameScreenActivity extends AppCompatActivity {
 
-    public final int ONE_ROUND_IN_MILLIS = 90000;
+    public static final String FINAL_SCORE = "FINAL_SCORE";
+    public static final String TIMER_START_TIME = "00:00";
+    public final int ONE_ROUND_IN_MILLIS = 9000;
     public final int COUNT_DOWN_INTERVAL_IN_MILLIS = 1000;
 
     private StroopGame stroopGame = new StroopGame();
@@ -80,6 +83,17 @@ public class GameScreenActivity extends AppCompatActivity {
         timer.start();
 
         updateUI();
+    }
+
+    public void nextActivity() {
+
+        this.coutdownTimerTxt.setText(TIMER_START_TIME);
+
+        Intent countDownIntent = new Intent(this, ContinueScreenActivity.class);
+
+        countDownIntent.putExtra(FINAL_SCORE, stroopGame.getScore());
+
+        startActivity(countDownIntent);
     }
 
     @Override
