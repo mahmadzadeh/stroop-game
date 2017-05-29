@@ -4,7 +4,7 @@ import com.stroopgame.ui.element.LeftButton;
 import com.stroopgame.ui.element.MainText;
 import com.stroopgame.ui.element.RightButton;
 import com.stroopgame.ui.element.StatefulButton;
-import com.stroopgame.ui.element.StatefulGameObject;
+import com.stroopgame.ui.element.StatefulGameObject.ColourState;
 import com.stroopgame.util.RandomBoolean;
 import com.stroopgame.util.RandomColourAndText;
 
@@ -37,7 +37,7 @@ public class StroopGame {
         LeftButton leftButton;
 
         if (shouldRightButtonMatchMainColour) {
-            if (mainText.getColourState() == RedColour) {
+            if (RedColour == mainColourState(mainText)) {
                 rightButton = new RightButton(RedText, getRandomColourState());
                 leftButton = rightButton.ofOppositeTextWithRandomColour();
             } else {
@@ -45,7 +45,7 @@ public class StroopGame {
                 leftButton = rightButton.ofOppositeTextWithRandomColour();
             }
         } else {
-            if (mainText.getColourState() == BlueColour) {
+            if (BlueColour == mainColourState(mainText)) {
                 leftButton = new LeftButton(BlueText, getRandomColourState());
                 rightButton = leftButton.ofOppositeTextWithRandomColour();
             } else {
@@ -58,8 +58,8 @@ public class StroopGame {
     }
 
     public boolean evaluateAnswer(MainText mainText, StatefulButton usersAnswer) {
-        return (mainText.getColourState() == BlueColour && usersAnswer.getTextState() == BlueText) ||
-                (mainText.getColourState() == RedColour && usersAnswer.getTextState() == RedText);
+        return (BlueColour == mainColourState(mainText) && usersAnswer.getTextState() == BlueText) ||
+                (RedColour == mainColourState(mainText) && usersAnswer.getTextState() == RedText);
     }
 
     public boolean isCorrectAnswerBasedOnInternalState(StatefulButton usersAnswer) {
@@ -74,11 +74,15 @@ public class StroopGame {
         }
     }
 
+    private ColourState mainColourState(MainText mainText) {
+        return mainText.getColourState();
+    }
+
     public Integer getScore() {
         return score;
     }
 
-    private StatefulGameObject.ColourState getRandomColourState() {
+    private ColourState getRandomColourState() {
         return RandomBoolean.nextRandomTrue() ? BlueColour : RedColour;
     }
 }
