@@ -1,4 +1,4 @@
-package com.stroopgame;
+package com.stroopgame.util;
 
 import java.util.ArrayList;
 import java.util.HashSet;

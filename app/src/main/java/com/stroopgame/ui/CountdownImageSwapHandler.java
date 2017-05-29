@@ -1,7 +1,9 @@
-package com.stroopgame;
+package com.stroopgame.ui;
 
 import android.os.Handler;
 import android.os.Message;
+
+import com.stroopgame.R;
 
 import java.util.Arrays;
 import java.util.List;

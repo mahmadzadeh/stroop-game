@@ -1,6 +1,6 @@
-package com.stroopgame;
+package com.stroopgame.ui.element;
 
-class StatefulButton extends StatefulGameObject {
+public class StatefulButton extends StatefulGameObject {
 
     public StatefulButton(TextState textState, ColourState colourState) {
         super(textState, colourState);

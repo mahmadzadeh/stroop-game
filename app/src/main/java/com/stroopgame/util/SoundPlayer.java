@@ -1,8 +1,10 @@
-package com.stroopgame;
+package com.stroopgame.util;
 
 
 import android.content.Context;
 import android.media.MediaPlayer;
+
+import com.stroopgame.R;
 
 public class SoundPlayer {
 

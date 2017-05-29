@@ -1,4 +1,4 @@
-package com.stroopgame;
+package com.stroopgame.ui.element;
 
 
 public class MainText extends StatefulGameObject {

@@ -1,5 +1,4 @@
-package com.stroopgame;
-
+package com.stroopgame.ui.element;
 
 public class RightButton extends StatefulButton {
 
@@ -8,6 +7,6 @@ public class RightButton extends StatefulButton {
     }
 
     public LeftButton ofOppositeTextWithRandomColour() {
-        return new LeftButton( getOppositeTextState(), getRandomColour());
+        return new LeftButton(getOppositeTextState(), getRandomColour());
     }
 }

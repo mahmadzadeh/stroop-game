@@ -1,5 +1,9 @@
 package com.stroopgame;
 
+import com.stroopgame.ui.element.LeftButton;
+import com.stroopgame.ui.element.MainText;
+import com.stroopgame.ui.element.RightButton;
+
 public class GameObjects {
 
     private final LeftButton leftButton;

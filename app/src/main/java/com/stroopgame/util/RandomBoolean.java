@@ -1,4 +1,4 @@
-package com.stroopgame;
+package com.stroopgame.util;
 
 public class RandomBoolean {
 

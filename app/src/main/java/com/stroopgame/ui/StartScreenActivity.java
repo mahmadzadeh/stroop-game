@@ -1,10 +1,12 @@
-package com.stroopgame;
+package com.stroopgame.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import com.stroopgame.R;
 
 public class StartScreenActivity extends AppCompatActivity {
 

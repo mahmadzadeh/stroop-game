@@ -1,8 +1,11 @@
-package com.stroopgame;
+package com.stroopgame.ui.element;
 
-import static com.stroopgame.StatefulGameObject.ColourState.BlueColour;
-import static com.stroopgame.StatefulGameObject.ColourState.RedColour;
-import static com.stroopgame.StatefulGameObject.TextState.BlueText;
+import com.stroopgame.util.RandomBoolean;
+
+import static com.stroopgame.ui.element.StatefulGameObject.ColourState.BlueColour;
+import static com.stroopgame.ui.element.StatefulGameObject.ColourState.RedColour;
+import static com.stroopgame.ui.element.StatefulGameObject.TextState.BlueText;
+import static com.stroopgame.ui.element.StatefulGameObject.TextState.RedText;
 
 public class StatefulGameObject {
 
@@ -14,11 +17,11 @@ public class StatefulGameObject {
         this.colourState = colourState;
     }
 
-    protected ColourState getRandomColour() {
+    public ColourState getRandomColour() {
         return RandomBoolean.nextRandomTrue() ? BlueColour : RedColour;
     }
 
-    protected TextState getOppositeTextState() {
+    public TextState getOppositeTextState() {
         return getTextState() == BlueText ? TextState.RedText : BlueText;
     }
 
@@ -30,7 +33,12 @@ public class StatefulGameObject {
         return colourState;
     }
 
-    enum TextState {
+    public boolean textAndColourMatch() {
+        return (colourState == RedColour && textState == RedText) ||
+                (colourState == BlueColour && textState == BlueText);
+    }
+
+    public enum TextState {
         RedText("RED"), BlueText("BLUE");
 
         private String s;
@@ -46,7 +54,7 @@ public class StatefulGameObject {
         }
     }
 
-    enum ColourState {
+    public enum ColourState {
         RedColour("RED"), BlueColour("BLUE");
 
         private String colour;

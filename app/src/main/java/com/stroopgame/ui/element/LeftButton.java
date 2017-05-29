@@ -1,5 +1,4 @@
-package com.stroopgame;
-
+package com.stroopgame.ui.element;
 
 public class LeftButton extends StatefulButton {
 

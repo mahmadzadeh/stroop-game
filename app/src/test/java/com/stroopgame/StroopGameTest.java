@@ -1,11 +1,15 @@
 package com.stroopgame;
 
+import com.stroopgame.ui.element.MainText;
+import com.stroopgame.ui.element.RightButton;
+import com.stroopgame.ui.element.StatefulButton;
+
 import org.junit.Test;
 
-import static com.stroopgame.StatefulGameObject.ColourState.BlueColour;
-import static com.stroopgame.StatefulGameObject.ColourState.RedColour;
-import static com.stroopgame.StatefulGameObject.TextState.BlueText;
-import static com.stroopgame.StatefulGameObject.TextState.RedText;
+import static com.stroopgame.ui.element.StatefulGameObject.ColourState.BlueColour;
+import static com.stroopgame.ui.element.StatefulGameObject.ColourState.RedColour;
+import static com.stroopgame.ui.element.StatefulGameObject.TextState.BlueText;
+import static com.stroopgame.ui.element.StatefulGameObject.TextState.RedText;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;

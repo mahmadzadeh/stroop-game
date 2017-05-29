@@ -1,9 +1,17 @@
 package com.stroopgame;
 
-import static com.stroopgame.StatefulGameObject.ColourState.BlueColour;
-import static com.stroopgame.StatefulGameObject.ColourState.RedColour;
-import static com.stroopgame.StatefulGameObject.TextState.BlueText;
-import static com.stroopgame.StatefulGameObject.TextState.RedText;
+import com.stroopgame.ui.element.LeftButton;
+import com.stroopgame.ui.element.MainText;
+import com.stroopgame.ui.element.RightButton;
+import com.stroopgame.ui.element.StatefulButton;
+import com.stroopgame.ui.element.StatefulGameObject;
+import com.stroopgame.util.RandomBoolean;
+import com.stroopgame.util.RandomColourAndText;
+
+import static com.stroopgame.ui.element.StatefulGameObject.ColourState.BlueColour;
+import static com.stroopgame.ui.element.StatefulGameObject.ColourState.RedColour;
+import static com.stroopgame.ui.element.StatefulGameObject.TextState.BlueText;
+import static com.stroopgame.ui.element.StatefulGameObject.TextState.RedText;
 
 public class StroopGame {
 
@@ -72,11 +80,5 @@ public class StroopGame {
 
     private StatefulGameObject.ColourState getRandomColourState() {
         return RandomBoolean.nextRandomTrue() ? BlueColour : RedColour;
-    }
-
-    private Parameters getParameters(Parameters mainTextParam, boolean shouldMatchMainTextColour, Parameters parameters) {
-        return shouldMatchMainTextColour
-                ? new Parameters(parameters.getText(), mainTextParam.getColour())
-                : new Parameters(parameters.getText(), mainTextParam.ofOppositeColour().getColour());
     }
 }

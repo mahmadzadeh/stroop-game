@@ -1,4 +1,4 @@
-package com.stroopgame;
+package com.stroopgame.util;
 
 
 import java.util.Collection;

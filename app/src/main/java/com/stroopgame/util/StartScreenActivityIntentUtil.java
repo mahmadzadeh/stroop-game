@@ -1,8 +1,10 @@
-package com.stroopgame;
+package com.stroopgame.util;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+
+import com.stroopgame.ui.StartScreenActivity;
 
 public class StartScreenActivityIntentUtil {
 

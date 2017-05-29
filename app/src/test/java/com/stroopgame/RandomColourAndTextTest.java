@@ -1,5 +1,8 @@
 package com.stroopgame;
 
+import com.stroopgame.ui.element.MainText;
+import com.stroopgame.util.RandomColourAndText;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,22 +12,22 @@ public class RandomColourAndTextTest {
 
     @Test
     public void nextRandom() {
-        List<Parameters> parametersList = new ArrayList<>();
+        List<MainText> parametersList = new ArrayList<>();
 
         for (int i = 0; i < 100; ++i) {
 
-            parametersList.add(RandomColourAndText.nextRandom());
+            parametersList.add(RandomColourAndText.nextRandomMainText());
         }
 
         outputPercentMatching(parametersList);
 
     }
 
-    private void outputPercentMatching(List<Parameters> parametersList) {
+    private void outputPercentMatching(List<MainText> parametersList) {
 
         int countMatching = 0;
 
-        for (Parameters parameters : parametersList) {
+        for (MainText parameters : parametersList) {
             if (parameters.textAndColourMatch()) {
                 countMatching++;
             }

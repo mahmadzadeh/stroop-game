@@ -1,4 +1,4 @@
-package com.stroopgame;
+package com.stroopgame.ui;
 
 import android.os.CountDownTimer;
 

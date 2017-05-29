@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.stroopgame.RandomBoolean.nextRandomTrue;
+import static com.stroopgame.util.RandomBoolean.nextRandomTrue;
 
 public class RandomBooleanTest {
 

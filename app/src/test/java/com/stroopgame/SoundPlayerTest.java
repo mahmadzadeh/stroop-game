@@ -2,6 +2,8 @@ package com.stroopgame;
 
 import android.media.MediaPlayer;
 
+import com.stroopgame.util.SoundPlayer;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -23,11 +25,12 @@ public class SoundPlayerTest {
     public void setUp() {
         initMocks(this);
     }
+
     @Test
     public void givenWrongAnswerGivenByUserSoundPlayerPlaysBuzzerSound() {
         doNothing().when(mockBuzzerMediaPlayer).start();
 
-        SoundPlayer player  = new SoundPlayer(mockBuzzerMediaPlayer, mockDingMediaPlayer);
+        SoundPlayer player = new SoundPlayer(mockBuzzerMediaPlayer, mockDingMediaPlayer);
 
         player.soundFeedbackForUserInput(false);
 
@@ -38,7 +41,7 @@ public class SoundPlayerTest {
     public void givenCorrectAnswerGivenByUserSoundPlayerPlaysBuzzerSound() {
 
         doNothing().when(mockDingMediaPlayer).start();
-        SoundPlayer player  = new SoundPlayer(mockBuzzerMediaPlayer, mockDingMediaPlayer);
+        SoundPlayer player = new SoundPlayer(mockBuzzerMediaPlayer, mockDingMediaPlayer);
 
         player.soundFeedbackForUserInput(true);
 

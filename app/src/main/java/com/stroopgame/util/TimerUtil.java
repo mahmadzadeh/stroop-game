@@ -1,4 +1,4 @@
-package com.stroopgame;
+package com.stroopgame.util;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -14,7 +14,7 @@ public class TimerUtil {
     public TimerUtil(TimerTask task, long timerInterval1, long timerDelay1) {
         this.timerInterval = timerInterval1;
         this.timerDelay = timerDelay1;
-        this.task  = task;
+        this.task = task;
     }
 
     public void start() {

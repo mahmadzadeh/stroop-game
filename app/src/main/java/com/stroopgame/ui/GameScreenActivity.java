@@ -1,4 +1,4 @@
-package com.stroopgame;
+package com.stroopgame.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.stroopgame.GameObjects;
+import com.stroopgame.R;
+import com.stroopgame.StroopGame;
+import com.stroopgame.util.RandomBoolean;
+import com.stroopgame.util.SoundPlayer;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.stroopgame.StatefulGameObject.ColourState.RedColour;
+import static com.stroopgame.ui.element.StatefulGameObject.ColourState.RedColour;
 
 public class GameScreenActivity extends AppCompatActivity {
 
