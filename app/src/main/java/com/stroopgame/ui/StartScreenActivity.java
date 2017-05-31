@@ -11,21 +11,21 @@ import com.stroopgame.R;
 public class StartScreenActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
 
-        setContentView(R.layout.activity_start_screen);
+        setContentView( R.layout.activity_start_screen );
 
-        final Button button = (Button) findViewById(R.id.continueButton);
+        final Button button = ( Button ) findViewById( R.id.continueButton );
 
         button.setOnClickListener(
                 new Button.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
-                        Intent countDownIntent = new Intent(v.getContext(), CountDownScreenActivity.class);
-                        startActivity(countDownIntent);
+                    public void onClick( View v ) {
+                        Intent countDownIntent = new Intent( v.getContext(), CountDownScreenActivity.class );
+                        startActivity( countDownIntent );
                     }
-                });
+                } );
 
     }
 }

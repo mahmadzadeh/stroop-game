@@ -11,23 +11,23 @@ public class TimerUtil {
     protected Timer timer = new Timer();
     protected TimerTask task;
 
-    public TimerUtil(TimerTask task, long timerInterval1, long timerDelay1) {
+    public TimerUtil( TimerTask task, long timerInterval1, long timerDelay1 ) {
         this.timerInterval = timerInterval1;
         this.timerDelay = timerDelay1;
         this.task = task;
     }
 
-    public void start() {
-        timer.scheduleAtFixedRate(task, timerInterval, timerDelay);
+    public void start( ) {
+        timer.scheduleAtFixedRate( task, timerInterval, timerDelay );
     }
 
-    public void pause() {
+    public void pause( ) {
         timer.cancel();
         timer.purge();
     }
 
-    public void resume() {
+    public void resume( ) {
         timer = new Timer();
-        timer.scheduleAtFixedRate(task, timerInterval, timerDelay);
+        timer.scheduleAtFixedRate( task, timerInterval, timerDelay );
     }
 }

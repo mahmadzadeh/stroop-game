@@ -14,43 +14,43 @@ public class CountDownScreenActivity extends AppCompatActivity {
     private final Long TIMER_INTERVAL = 100l;
     private final Long TIMER_DELAY = 1000l;
     ImageView countDownImage;
-    CountdownImageSwapHandler handler = new CountdownImageSwapHandler(this);
+    CountdownImageSwapHandler handler = new CountdownImageSwapHandler( this );
 
     TimerTask timerTask = new TimerTask() {
-        public void run() {
-            if (handler.hasMoreImagesToSwap()) {
-                handler.obtainMessage(1).sendToTarget();
+        public void run( ) {
+            if ( handler.hasMoreImagesToSwap() ) {
+                handler.obtainMessage( 1 ).sendToTarget();
             } else {
-                Intent countDownIntent = new Intent(CountDownScreenActivity.this, GameScreenActivity.class);
-                startActivity(countDownIntent);
+                Intent countDownIntent = new Intent( CountDownScreenActivity.this, GameScreenActivity.class );
+                startActivity( countDownIntent );
             }
         }
     };
-    TimerUtil countDownTimer = new TimerUtil(timerTask, TIMER_INTERVAL, TIMER_DELAY);
+    TimerUtil countDownTimer = new TimerUtil( timerTask, TIMER_INTERVAL, TIMER_DELAY );
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
 
-        setContentView(R.layout.countdown_screen);
+        setContentView( R.layout.countdown_screen );
 
-        countDownImage = (ImageView) findViewById(R.id.imageView);
+        countDownImage = ( ImageView ) findViewById( R.id.imageView );
 
         countDownTimer.start();
     }
 
-    public void swapImage(int resourceId) {
-        countDownImage.setImageResource(resourceId);
+    public void swapImage( int resourceId ) {
+        countDownImage.setImageResource( resourceId );
     }
 
     @Override
-    public void onPause() {
+    public void onPause( ) {
         super.onPause();
         countDownTimer.pause();
     }
 
     @Override
-    public void onStop() {
+    public void onStop( ) {
         super.onStop();
         countDownTimer.pause();
     }

@@ -18,29 +18,29 @@ public class CountdownImageSwapHandler extends Handler {
                     R.drawable.android3,
                     R.drawable.android2,
                     R.drawable.android1,
-                    R.drawable.go);
+                    R.drawable.go );
 
     private int countDownImageCount = imageResourceIds.size();
 
-    public CountdownImageSwapHandler(CountDownScreenActivity activity) {
+    public CountdownImageSwapHandler( CountDownScreenActivity activity ) {
         super();
         this.activity = activity;
         this.currentImageIndex = 0;
     }
 
-    public void handleMessage(Message m) {
+    public void handleMessage( Message m ) {
 
-        if (hasMoreImagesToSwap()) {
-            activity.swapImage(imageResourceIds.get(currentImageIndex));
+        if ( hasMoreImagesToSwap() ) {
+            activity.swapImage( imageResourceIds.get( currentImageIndex ) );
         }
         currentImageIndex += 1;
     }
 
-    public boolean hasMoreImagesToSwap() {
+    public boolean hasMoreImagesToSwap( ) {
         return currentImageIndex < countDownImageCount;
     }
 
-    public int getCountOfImagesToBeSwapped() {
+    public int getCountOfImagesToBeSwapped( ) {
         return countDownImageCount;
     }
 }

@@ -2,11 +2,11 @@ package com.stroopgame.ui.element;
 
 public class RightButton extends StatefulButton {
 
-    public RightButton(TextState textState, ColourState colourState) {
-        super(textState, colourState);
+    public RightButton( TextState textState, ColourState colourState ) {
+        super( textState, colourState );
     }
 
-    public LeftButton ofOppositeTextWithRandomColour() {
-        return new LeftButton(getOppositeTextState(), getRandomColour());
+    public LeftButton ofOppositeTextWithRandomColour( ) {
+        return new LeftButton( getOppositeTextState(), getRandomColour() );
     }
 }

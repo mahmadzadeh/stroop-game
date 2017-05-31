@@ -15,32 +15,32 @@ public class ContinueScreenActivity extends AppCompatActivity {
     public static final String SCORE_TEXT = "Score ";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
 
-        setContentView(R.layout.continue_screen);
+        setContentView( R.layout.continue_screen );
 
-        final Button continueButton = (Button) findViewById(R.id.continueButton);
-        final Button quitButton = (Button) findViewById(R.id.quitButton);
-        final Button saveButton = (Button) findViewById(R.id.saveScoreButton);
-        final TextView score = (TextView) findViewById(R.id.score);
+        final Button continueButton = ( Button ) findViewById( R.id.continueButton );
+        final Button quitButton = ( Button ) findViewById( R.id.quitButton );
+        final Button saveButton = ( Button ) findViewById( R.id.saveScoreButton );
+        final TextView score = ( TextView ) findViewById( R.id.score );
 
         final String actualScore = extractScoreFromIntentExtras();
-        score.setText(SCORE_TEXT + actualScore);
+        score.setText( SCORE_TEXT + actualScore );
 
         continueButton.setOnClickListener(
                 new Button.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
-                        StartScreenActivityIntentUtil.backToStartScreen(v, ContinueScreenActivity.this);
+                    public void onClick( View v ) {
+                        StartScreenActivityIntentUtil.backToStartScreen( v, ContinueScreenActivity.this );
                     }
-                });
+                } );
 
         quitButton.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
-                        StartScreenActivityIntentUtil.backToStartScreen(v, ContinueScreenActivity.this);
+                    public void onClick( View v ) {
+                        StartScreenActivityIntentUtil.backToStartScreen( v, ContinueScreenActivity.this );
                     }
                 }
         );
@@ -58,13 +58,13 @@ public class ContinueScreenActivity extends AppCompatActivity {
 //        );
     }
 
-    private String extractScoreFromIntentExtras() {
+    private String extractScoreFromIntentExtras( ) {
         Bundle extras = getIntent().getExtras();
 
         String value = "";
 
-        if (extras != null) {
-            value = extras.getInt(GameScreenActivity.FINAL_SCORE) + "";
+        if ( extras != null ) {
+            value = extras.getInt( GameScreenActivity.FINAL_SCORE ) + "";
         }
         return value;
     }
