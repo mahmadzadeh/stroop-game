@@ -10,7 +10,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import java.util.List;
 
 public class ChartUtil {
-    public static final int GREEN = Color.rgb( 96, 122, 159 );
+    public static final int LIGHT_BLUE = Color.rgb( 96, 122, 159 );
     public static final String SCORE_DATA_DESC = "Score Data";
 
     public static LineDataSet dataSetForYAxis( List<Entry> entries ) {
@@ -18,14 +18,14 @@ public class ChartUtil {
 
         dataSet.enableDashedLine( 10f, 5f, 0f );
         dataSet.enableDashedHighlightLine( 10f, 5f, 0f );
-        dataSet.setColor( GREEN );
-        dataSet.setCircleColor( GREEN );
+        dataSet.setColor( LIGHT_BLUE );
+        dataSet.setCircleColor( LIGHT_BLUE );
         dataSet.setLineWidth( 1f );
         dataSet.setCircleRadius( 3f );
         dataSet.setDrawCircleHole( false );
         dataSet.setValueTextSize( 9f );
         dataSet.setDrawFilled( true );
-        dataSet.setFillColor( GREEN );
+        dataSet.setFillColor( LIGHT_BLUE );
         dataSet.setValueTextColor( Color.WHITE );
 
         return dataSet;
@@ -39,6 +39,4 @@ public class ChartUtil {
         mChart.getAxisRight().setTextColor( Color.WHITE );
         mChart.getXAxis().setTextColor( Color.WHITE );
     }
-
-
 }
