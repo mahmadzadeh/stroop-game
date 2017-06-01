@@ -1,5 +1,6 @@
 package com.stroopgame.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,6 +9,10 @@ import android.widget.TextView;
 
 import com.stroopgame.R;
 import com.stroopgame.util.StartScreenActivityIntentUtil;
+
+import java.util.Date;
+
+import static com.stroopgame.util.DateUtil.format;
 
 public class ContinueScreenActivity extends AppCompatActivity {
 
@@ -45,17 +50,17 @@ public class ContinueScreenActivity extends AppCompatActivity {
                 }
         );
 
-//        saveButton.setOnClickListener(
-//                new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent chartActivityIntent = new Intent(v.getContext(), ChartActivity.class);
-//                        chartActivityIntent.putExtra(GameScreenActivity.FINAL_SCORE, actualScore);
-//                        chartActivityIntent.putExtra(ContinueScreenActivity.DATE, format(new Date()));
-//                        startActivity(chartActivityIntent);
-//                    }
-//                }
-//        );
+        saveButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick( View v ) {
+                        Intent chartActivityIntent = new Intent( v.getContext(), ChartActivity.class );
+                        chartActivityIntent.putExtra( GameScreenActivity.FINAL_SCORE, actualScore );
+                        chartActivityIntent.putExtra( ContinueScreenActivity.DATE, format( new Date() ) );
+                        startActivity( chartActivityIntent );
+                    }
+                }
+        );
     }
 
     private String extractScoreFromIntentExtras( ) {
